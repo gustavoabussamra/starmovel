@@ -1,0 +1,40 @@
+div.curve {
+    margin-top: 10px;
+    background-color: #fdb97d;
+    width: 100%;
+}
+
+div.curve-sub {
+    background-color: white;
+    width: 100%;
+    height: 100%;
+}
+
+div.curve-bottom {
+    border-top-left-radius: 100%;
+    border-top-right-radius: 0%;
+}
+
+div.curve-bottom-sub {
+    border-top-left-radius: 100%;
+    border-top-right-radius: 0%;
+}
+
+.branco {
+    color: white;
+}
+
+ion-content {
+    --ion-background-color: #fd8215;
+}
+
+.background-branco {
+    --ion-background-color: white;
+}
+
+.list {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+

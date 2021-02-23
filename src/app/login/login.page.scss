@@ -1,0 +1,40 @@
+.branco {
+    color: white;
+}
+
+.consumo {
+    padding: 6px;
+    border-radius: 23px;
+}
+
+div.curve {
+    background-color: #fdb97d;
+    width: 100%;
+    height: 60%;
+    
+}
+
+div.curve-sub {
+    background-color: #fd8215;
+    width: 100%;
+    height: 85%;
+}
+
+div.curve-top {
+    border-bottom-left-radius: 30%;
+    border-bottom-right-radius: 0%;
+}
+
+div.curve-top-sub {
+    border-bottom-left-radius: 30%;
+    border-bottom-right-radius: 0%;
+}
+
+ion-content {
+    --ion-background-color: #ffffff;
+}
+
+.login{
+    width: 250px;
+    margin: 0 auto;
+}

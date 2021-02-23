@@ -1,0 +1,112 @@
+<ion-header class="ion-no-border" mode="ios">
+  <ion-toolbar color="laranja">
+    <ion-buttons>
+      <ion-back-button color="light" text="Voltar">
+      </ion-back-button>
+      <ion-title class="branco">STARNET</ion-title>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" mode="ios">
+  <div style="margin-top: 5%">
+    <ion-label class="branco"
+      style="font-size: 30px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 5%;">
+      Abrir Chamado!
+    </ion-label>
+  </div>
+  <div class="curve curve-bottom">
+    <div style="padding: 1%;"></div>
+    <div class="curve-sub curve-bottom-sub background-branco">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-subtitle>Mensagem</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          <form (ngSubmit)="SendChamado()" #enviar="ngForm">
+            <ion-list>
+              <ion-item>
+                <ion-label class="font">
+                  <ion-icon name="chatbox"></ion-icon>
+                </ion-label>
+                <ion-textarea [(ngModel)]="mensagem" name="mensagem"></ion-textarea>
+              </ion-item>
+            </ion-list>
+            <div class="ion-text-center" *ngIf="erro; else elseBlock">
+              <br>
+              <ion-text color="laranja">{{erro}}</ion-text>
+            </div>
+            <br>
+            <ion-button shape="round" fill="outline" expand="full" color="laranja" (click)="enviar.ngSubmit.emit()">
+              ENVIAR
+            </ion-button>
+          </form>
+        </ion-card-content>
+      </ion-card>
+
+      <ion-card>
+        <ion-card-header>
+          <ion-card-subtitle>
+            CHAMADOS
+            <ion-segment style="margin-top: 10px;" value="aberto">
+              <ion-segment-button value="aberto" (click)="RetornaChamado('N')">
+                <ion-label>ABERTOS</ion-label>
+              </ion-segment-button>
+              <ion-segment-button value="finalizado" (click)="RetornaChamado('S')">
+                <ion-label>ENCERRADOS</ion-label>
+              </ion-segment-button>
+            </ion-segment>
+          </ion-card-subtitle>
+        </ion-card-header>
+
+        <ion-card style="margin-top: -5px;" *ngFor="let chamados of Chamados">
+          <div *ngIf="chamados.protocolo && !load">
+            <ion-card-header>
+              <ion-card-subtitle>
+                <ion-row>
+                  <ion-col style="text-align: left">
+                    Hora {{chamados.hr_abertura}}
+                    Data {{FormataData(chamados.dt_abertura)}}
+                  </ion-col>
+                  <ion-col style="text-align: right;">
+                    Protocolo {{chamados.protocolo}}
+                  </ion-col>
+                </ion-row>
+              </ion-card-subtitle>
+
+            </ion-card-header>
+
+            <ion-card-content>
+              <ion-row>
+                <ion-col>
+                  {{chamados.info_cliente}}
+                </ion-col>
+              </ion-row>
+            </ion-card-content>
+          </div>
+        </ion-card>
+
+        <ion-card style="margin-top: -5px;" *ngIf="!Chamados && !load" >
+          <ion-card-content>
+            <ion-row>
+              <ion-col>
+                Não possui chamados abertos no momento!
+              </ion-col>
+            </ion-row>
+          </ion-card-content>
+        </ion-card>
+      </ion-card>
+
+      <div class="progress-pie-chart" style="background-color: #fd8215; margin-top: 300px;" *ngIf="load">
+        <div class="load" style="margin-top: 250px;">
+          <hr />
+          <hr />
+          <hr />
+          <hr />
+        </div>
+      </div>
+      <br>
+      <br>
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,122 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="laranja">
+    <ion-title class="branco">{{titulo}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()">Fechar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div style="margin-top: 5%">
+  </div>
+  <div class="curve curve-bottom">
+    <div style="padding: 1%;"></div>
+    <div class="curve-sub curve-bottom-sub background-branco">
+      <div style="margin: 0 auto; width: 70%" *ngIf="sistema == 'ios'">
+        <img src="../../assets/img/suporte/apn-ios/phone-1.png" *ngIf="img == 1">
+        <img src="../../assets/img/suporte/apn-ios/phone-2.png" *ngIf="img == 2">
+        <img src="../../assets/img/suporte/apn-ios/phone-3.png" *ngIf="img == 3">
+        <img src="../../assets/img/suporte/apn-ios/phone-4.png" *ngIf="img == 4">
+        <img src="../../assets/img/suporte/apn-ios/phone-5.1.png" *ngIf="img == 5">
+        <img src="../../assets/img/suporte/apn-ios/phone-5.2.png" *ngIf="img == 6">
+        <img src="../../assets/img/suporte/apn-ios/phone-5.3.png" *ngIf="img == 7">
+        <img src="../../assets/img/suporte/apn-ios/phone-5.4.png" *ngIf="img == 8">
+        <img src="../../assets/img/suporte/apn-ios/phone-6.png" *ngIf="img == 9">
+        <img src="../../assets/img/suporte/apn-ios/phone-7.png" *ngIf="img == 10">
+        <ion-grid>
+          <ion-row >
+            <ion-col class="ion-text-center">
+              <ion-button fill="outline" shape="round" color="laranja" (click)="Back()">
+                <ion-icon name="chevron-back-outline"></ion-icon>
+              </ion-button>
+              <ion-button fill="outline" shape="round" color="laranja" (click)="Go()">
+                <ion-icon name="chevron-forward-outline"></ion-icon>
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+
+      <div style="margin: 0 auto; width: 70%" *ngIf="sistema == 'android'">
+        <img src="../../assets/img/suporte/apn-android/A01/A01-1.png" *ngIf="img == 1">
+        <img src="../../assets/img/suporte/apn-android/A01/A01-2.png" *ngIf="img == 2">
+        <img src="../../assets/img/suporte/apn-android/A01/A01-3.png" *ngIf="img == 3">
+        <img src="../../assets/img/suporte/apn-android/A01/A01-4.png" *ngIf="img == 4">
+        <img src="../../assets/img/suporte/apn-android/A01/A01-5.png" *ngIf="img == 5">
+        <img src="../../assets/img/suporte/apn-android/A01/A01-6.png" *ngIf="img == 6">
+        <img src="../../assets/img/suporte/apn-android/A01/A01-7.png" *ngIf="img == 7">
+        <img src="../../assets/img/suporte/apn-android/A01/A01-8.png" *ngIf="img == 8">
+        <img src="../../assets/img/suporte/apn-android/A01/A01-9.png" *ngIf="img == 9">
+        <img src="../../assets/img/suporte/apn-android/A01/A01-10.png" *ngIf="img == 10">
+        <img src="../../assets/img/suporte/apn-android/A01/A01-11.png" *ngIf="img == 11">
+        <img src="../../assets/img/suporte/apn-android/A01/A01-12.png" *ngIf="img == 12">
+        <img src="../../assets/img/suporte/apn-android/A01/A01-13.png" *ngIf="img == 13">
+        <img src="../../assets/img/suporte/apn-android/A01/A01-14.png" *ngIf="img == 14">
+        <img src="../../assets/img/suporte/apn-android/A01/A01-15.png" *ngIf="img == 15">
+        <img src="../../assets/img/suporte/apn-android/A01/A01-16.png" *ngIf="img == 16">
+
+        <ion-grid>
+          <ion-row >
+            <ion-col class="ion-text-center">
+              <ion-button fill="outline" shape="round" color="laranja" (click)="Back()">
+                <ion-icon name="chevron-back-outline"></ion-icon>
+              </ion-button>
+              <ion-button fill="outline" shape="round" color="laranja" (click)="Go()">
+                <ion-icon name="chevron-forward-outline"></ion-icon>
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+      
+      <div style="margin: 0 auto; width: 70%" *ngIf="sistema == 'rede-ios'">
+        <img src="../../assets/img/suporte/rede-ios/phone-1.png" *ngIf="img == 1">
+        <img src="../../assets/img/suporte/rede-ios/phone-2.png" *ngIf="img == 2">
+        <img src="../../assets/img/suporte/rede-ios/phone-3.png" *ngIf="img == 3">
+        <img src="../../assets/img/suporte/rede-ios/phone-4.png" *ngIf="img == 4">
+        <img src="../../assets/img/suporte/rede-ios/phone-5.png" *ngIf="img == 5">
+        <img src="../../assets/img/suporte/rede-ios/phone-6.png" *ngIf="img == 6">
+
+        <ion-grid>
+          <ion-row >
+            <ion-col class="ion-text-center">
+              <ion-button fill="outline" shape="round" color="laranja" (click)="Back()">
+                <ion-icon name="chevron-back-outline"></ion-icon>
+              </ion-button>
+              <ion-button fill="outline" shape="round" color="laranja" (click)="Go()">
+                <ion-icon name="chevron-forward-outline"></ion-icon>
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+
+      <div style="margin: 0 auto; width: 70%" *ngIf="sistema == 'rede-android'">
+        <img src="../../assets/img/suporte/rede-android/A01-1.png" *ngIf="img == 1">
+        <img src="../../assets/img/suporte/rede-android/A01-2.png" *ngIf="img == 2">
+        <img src="../../assets/img/suporte/rede-android/A01-3.png" *ngIf="img == 3">
+        <img src="../../assets/img/suporte/rede-android/A01-4.png" *ngIf="img == 4">
+        <img src="../../assets/img/suporte/rede-android/A01-5.png" *ngIf="img == 5">
+        <img src="../../assets/img/suporte/rede-android/A01-6.png" *ngIf="img == 6">
+        <img src="../../assets/img/suporte/rede-android/A01-7.png" *ngIf="img == 7">
+        <img src="../../assets/img/suporte/rede-android/A01-8.png" *ngIf="img == 8">
+        <img src="../../assets/img/suporte/rede-android/A01-9.png" *ngIf="img == 9">
+        <img src="../../assets/img/suporte/rede-android/A01-10.png" *ngIf="img == 10">
+
+        <ion-grid>
+          <ion-row >
+            <ion-col class="ion-text-center">
+              <ion-button fill="outline" shape="round" color="laranja" (click)="Back()">
+                <ion-icon name="chevron-back-outline"></ion-icon>
+              </ion-button>
+              <ion-button fill="outline" shape="round" color="laranja" (click)="Go()">
+                <ion-icon name="chevron-forward-outline"></ion-icon>
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+    </div>
+  </div>
+</ion-content>

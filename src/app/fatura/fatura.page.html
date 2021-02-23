@@ -1,0 +1,111 @@
+<ion-header class="ion-no-border" mode="ios">
+  <ion-toolbar color="laranja">
+    <ion-buttons>
+      <ion-back-button color="light" text="Voltar">
+      </ion-back-button>
+      <ion-title class="branco">STARNET</ion-title>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" mode="ios">
+  <div style="margin-top: 5%">
+    <ion-label class="branco"
+      style="font-size: 30px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 5%;">
+      Minhas Faturas!
+    </ion-label>
+  </div>
+  <div class="curve curve-bottom">
+    <div style="padding: 1%;"></div>
+    <div class="curve-sub curve-bottom-sub background-branco">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-subtitle>
+            FATURAS ABERTAS
+          </ion-card-subtitle>
+        </ion-card-header>
+        <div *ngFor="let faturas of Faturas">
+          <ion-card style="margin-top: -5px;" *ngIf="faturas.liquidado == 'N'">
+            <ion-card-header>
+              <ion-card-subtitle>
+                <ion-row>
+                  <ion-col style="text-align: left">
+                    FATURA {{FormataData(faturas.data_vencimento)}}
+                  </ion-col>
+                  <ion-col class="ion-text-center" style="margin-bottom: -100px;"></ion-col>
+                </ion-row>
+              </ion-card-subtitle>
+            </ion-card-header>
+            <ion-card-content>
+              <ion-row style="margin-top: -10px;">
+                <ion-col>
+                  <h1>R$ {{faturas.valor_total}}</h1>
+                  <ion-card-subtitle style="margin-top: 10px;">Não Liquidada
+                  </ion-card-subtitle>
+                </ion-col>
+                <ion-col class="ion-text-center" style="height: 50px;">
+                  <a href="{{faturas.link}}" target="_blank">
+                    <ion-button color="light" style="width: 70%; height: 70px; margin-top: -20px;">
+                      <!-- <img src="../../assets/img/baixar.png" width="70%" style=" margin-top: -5px"> -->
+                      <ion-icon name="arrow-down-outline" width="70%" style=" margin-top: -5px" color="laranja"
+                        size="large"></ion-icon>
+                    </ion-button>
+                  </a>
+                </ion-col>
+              </ion-row>
+            </ion-card-content>
+          </ion-card>
+        </div>
+      </ion-card>
+
+      <ion-card>
+        <ion-card-header>
+          <ion-card-subtitle>
+            FATURAS LIQUIDADAS
+          </ion-card-subtitle>
+        </ion-card-header>
+        <div *ngFor="let faturas of Faturas">
+          <ion-card style="margin-top: -5px;" *ngIf="faturas.liquidado == 'S'">
+            <ion-card-header>
+              <ion-card-subtitle>
+                <ion-row>
+                  <ion-col style="text-align: left">
+                    FATURA {{FormataData(faturas.data_vencimento)}}
+                  </ion-col>
+                  <ion-col class="ion-text-center"></ion-col>
+                </ion-row>
+              </ion-card-subtitle>
+            </ion-card-header>
+            <ion-card-content>
+              <ion-row style="margin-top: -10px;">
+                <ion-col>
+                  <h1>R$ {{faturas.valor_total}}</h1>
+                  <ion-card-subtitle style="margin-top: 10px;">Pago em {{FormataData(faturas.data_liquidacao)}}
+                  </ion-card-subtitle>
+                </ion-col>
+
+                <ion-col class="ion-text-center" style="height: 50px;">
+                  <ion-button color="light" style="width: 70%; height: 70px; margin-top: -20px;">
+                    <ion-icon name="checkbox-outline" width="90%" style=" margin-top: -5px" color="success"
+                      size="large"></ion-icon>
+                  </ion-button>
+                </ion-col>
+              </ion-row>
+            </ion-card-content>
+          </ion-card>
+        </div>
+      </ion-card>
+
+      <div class="progress-pie-chart" style="background-color: #fd8215; margin-top: -100px;" *ngIf="load">
+        <div class="load" style="margin-top: 150px;">
+          <hr />
+          <hr />
+          <hr />
+          <hr />
+        </div>
+      </div>
+      <br>
+      <br>
+    </div>
+  </div>
+</ion-content>

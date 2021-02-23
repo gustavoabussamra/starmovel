@@ -1,0 +1,73 @@
+<ion-header class="ion-no-border"  mode="ios">
+  <ion-toolbar color="laranja">
+    <ion-title class="branco">STARNET</ion-title>
+    <ion-buttons slot="start"  (click)="dismiss()">
+      <ion-icon name="chevron-back-outline" size="large"></ion-icon>
+      <ion-button style="margin-left: -10px;">Voltar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true"  mode="ios">
+  <div style="margin-top: 5%">
+    <ion-label class="branco"
+      style="font-size: 30px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 5%;">
+      Adicionar Pacote!
+    </ion-label>
+  </div>
+  <div class="curve curve-bottom">
+    <div style="padding: 1%;"></div>
+    <div class="curve-sub curve-bottom-sub background-branco">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-subtitle>DEFINIR PERIODO</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          <form (ngSubmit)="Consultar()" #consultar="ngForm">
+            <ion-grid>
+              <ion-row class="ion-text-center">
+                <ion-col>
+                  <ion-row class="ion-text-center">
+                    <ion-text color="secondary" style="margin: 0 auto; font-size: 70px;">
+                      {{Gb}}
+                    </ion-text>
+                  </ion-row>
+                  <ion-row class="ion-text-center">
+                    <ion-text color="secondary" style="margin: 0 auto; margin-top: -20px;">
+                      <h2>GB</h2>
+                    </ion-text>
+                  </ion-row>
+                </ion-col>
+                <ion-col>
+                  <ion-row class="ion-text-center">
+                    <ion-button color="primary" style="margin: 0 auto; font-size: 20px;" (click)="Pacote('add')">
+                      <ion-icon name="chevron-up-outline"></ion-icon>
+                    </ion-button>
+                  </ion-row>
+                  <ion-row style="margin-top: 10px;">
+                    <ion-button color="primary" style="margin: 0 auto; font-size: 20px" (click)="Pacote('sub')">
+                      <ion-icon name="chevron-down-outline"></ion-icon>
+                    </ion-button>
+                  </ion-row>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+            <br>
+            <ion-button shape="round" fill="outline" expand="full" color="laranja" (click)="presentAlert()">
+              COMPRAR
+            </ion-button>
+          </form>
+        </ion-card-content>
+      </ion-card>
+
+      <div class="progress-pie-chart" style="background-color: #fd8215; margin-top: 300px;" *ngIf="load">
+        <div class="load" style="margin-top: 150px;">
+          <hr />
+          <hr />
+          <hr />
+          <hr />
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

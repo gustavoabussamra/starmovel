@@ -1,0 +1,8 @@
+{
+  "name": "Starnet Movel",
+  "integrations": {
+    "cordova": {},
+    "capacitor": {}
+  },
+  "type": "angular"
+}

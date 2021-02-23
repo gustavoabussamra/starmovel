@@ -1,0 +1,155 @@
+<ion-header class="ion-no-border" mode="ios"> 
+  <ion-toolbar color="laranja">
+    <ion-buttons>
+      <ion-back-button color="light" text="Voltar">
+      </ion-back-button>
+      <ion-title class="branco">STARNET</ion-title>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true"  mode="ios">
+  <div style="margin-top: 5%">
+    <ion-label class="branco"
+      style="font-size: 30px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 5%;">
+      Meu Consumo!
+    </ion-label>
+  </div>
+  <div class="curve curve-bottom">
+    <div style="padding: 1%;"></div>
+    <div class="curve-sub curve-bottom-sub background-branco">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-subtitle>DEFINIR PERIODO</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          <form (ngSubmit)="Consultar()" #consultar="ngForm">
+            <ion-grid>
+              <ion-row class="ion-text-center">
+                <ion-col>
+                  Data Inicial
+                  <ion-datetime [(ngModel)]="inicial" name="inicial" placeholder="00/00/0000" displayFormat="DD/MM/YYYY"
+                    value="0000-00-00" style="margin-right: 12px;" cancel-text="Cancelar" done-text="Confirmar"></ion-datetime>
+                </ion-col>
+                <ion-col>
+                  Data Final
+                  <ion-datetime [(ngModel)]="final" name="final" placeholder="00/00/0000" displayFormat="DD/MM/YYYY"
+                    value="0000-00-00" style="margin-right: 12px;" cancel-text="Cancelar" done-text="Confirmar"></ion-datetime>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+            <div class="ion-text-center" *ngIf="erro; else elseBlock">
+              <ion-text color="laranja">{{erro}}</ion-text>
+            </div>
+            <br>
+            <ion-button shape="round" fill="outline" expand="full" color="laranja" (click)="consultar.ngSubmit.emit()">
+              CONSULTAR
+            </ion-button>
+          </form>
+        </ion-card-content>
+      </ion-card>
+
+      <div class="progress-pie-chart" style="background-color: #fd8215; margin-top: 300px;" *ngIf="load">
+        <div class="load" style="margin-top: 150px;">
+          <hr />
+          <hr />
+          <hr />
+          <hr />
+        </div>
+      </div>
+
+      <ion-card *ngIf="Extrato && load == false">
+        <ion-card-header>
+          <ion-card-subtitle>EXTRATO</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-segment value="ligacoes">
+            <ion-segment-button value="ligacoes" (click)="showExtrato('ligacoes')">
+              <ion-label>LIGAÇÕES</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="sms" (click)="showExtrato('sms')">
+              <ion-label>SMS</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="dados" (click)="showExtrato('dados')">
+              <ion-label>DADOS</ion-label>
+            </ion-segment-button>
+          </ion-segment>
+          <br>
+          <!-- EXTRATO DE LIGAÇÕES -->
+          <ion-grid *ngIf="isShow == 'ligacoes'">
+            <ion-row class="ion-text-center">
+              <ion-col class="ion-text-left">DATA</ion-col>
+              <ion-col>HORA</ion-col>
+              <ion-col>DURAÇÃO</ion-col>
+              <ion-col>DESTINO</ion-col>
+            </ion-row>
+
+            <div *ngFor="let extrato of Extrato">
+              <ion-row class="ion-text-center" style="font-size: 12px;" *ngFor="let movel of extrato.movel">
+                <ion-col class="ion-text-center">
+                  <ion-row>
+                    {{FormataData(extrato.Data)}}
+                  </ion-row>
+                </ion-col>
+                <ion-col class="ion-text-center">
+                  <ion-row>
+                    {{FormataHora(movel.Hora)}}
+                  </ion-row>
+                </ion-col>
+                <ion-col class="ion-text-center">
+                  <ion-row>
+                    {{FormataDuracao(movel.Consumo_Segundos)}}
+                  </ion-row>
+                </ion-col>
+                <ion-col class="ion-text-center">
+                  <ion-row>
+                    {{movel.Nro_Destino}}
+                  </ion-row>
+                </ion-col>
+              </ion-row>
+            </div>
+          </ion-grid>
+
+          <!-- EXTRATO DE SMS -->
+          <ion-grid *ngIf="isShow == 'sms'">
+            <ion-row class="ion-text-center">
+              <ion-col>DATA</ion-col>
+              <ion-col>HORA</ion-col>
+              <ion-col>DESTINO</ion-col>
+            </ion-row>
+            <div *ngFor="let extrato of Extrato">
+              <ion-row class="ion-text-center" *ngFor="let sms of extrato.sms">
+                <ion-col style="text-align: center; font-size: 12px;">
+                  {{FormataData(extrato.Data)}}
+                </ion-col>
+                <ion-col>
+                  <p style="text-align: center; font-size: 12px;">
+                    {{FormataHora(sms.Hora)}}
+                  </p>
+                </ion-col>
+                <ion-col>
+                  <p style="text-align: center; font-size: 12px;">
+                    {{sms.Nro_Destino}}
+                  </p>
+                </ion-col>
+              </ion-row>
+            </div>
+          </ion-grid>
+          <!-- EXTRATO DE DADOS -->
+          <ion-grid *ngIf="isShow == 'dados'">
+            <ion-row class="ion-text-center">
+              <ion-col>DATA</ion-col>
+              <ion-col>CONSUMO</ion-col>
+            </ion-row>
+            <ion-row class="ion-text-center" style="font-size: 12px;" *ngFor="let extrato of Extrato">
+              <ion-col>{{FormataData(extrato.Data)}}</ion-col>
+              <ion-col>{{FormataDados(extrato.Consumo_Dados)}}</ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card-content>
+      </ion-card>
+      <br>
+      <br>
+    </div>
+  </div>
+</ion-content>

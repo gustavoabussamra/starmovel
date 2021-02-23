@@ -1,0 +1,81 @@
+<app-menu></app-menu>
+
+<ion-content [fullscreen]="true" mode="ios">
+  <ion-header class="ion-no-border" style="padding: 10px;">
+    <ion-toolbar color="transparent">
+      <!-- <ion-icon name="person-outline" slot="start" size="large" (click)="openMenu()" class="branco"></ion-icon> -->
+      <ion-title class="branco">SUPORTE</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <div style="margin-top: 5%">
+    <ion-label class="branco"
+      style="font-size: 30px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 5%;">
+      Duvidas Frequentes!
+    </ion-label>
+  </div>
+  <div class="curve curve-bottom">
+    <div style="padding: 1%;"></div>
+    <div class="curve-sub curve-bottom-sub background-branco">
+
+      <ion-card>
+        <ion-card-header>
+          <ion-card-subtitle style="font-size: 15px;">Configuração APN</ion-card-subtitle>
+        </ion-card-header>
+        <div style="padding: 10px;">
+          <ion-button expand="full" fill="outline" shape="round" (click)="presentAlert('apn')" color="laranja">
+            O que é APN?
+          </ion-button>
+          <ion-button expand="full" fill="outline" shape="round" (click)="presentModal('android',16, 'APN no Android')" color="laranja">
+            <ion-icon name="logo-android" slot="end"></ion-icon>
+            APN no Android
+          </ion-button>
+          <ion-button expand="full" fill="outline" shape="round" (click)="presentModal('ios',10, 'APN no IOS')" color="laranja">
+            <ion-icon name="logo-apple" slot="end"></ion-icon>
+            APN no IOS
+          </ion-button>
+        </div>
+        <ion-card-header>
+        </ion-card-header>
+      </ion-card>
+
+      <ion-card>
+        <ion-card-header>
+          <ion-card-subtitle style="font-size: 15px;">Selecionar Rede</ion-card-subtitle>
+        </ion-card-header>
+        <div style="padding: 10px;">
+          <ion-button expand="full" fill="outline" shape="round" (click)="presentAlert('rede')" color="laranja">
+            Selecionar Rede
+          </ion-button>
+          <ion-button expand="full" fill="outline" shape="round" (click)="presentModal('rede-android',10, 'Rede no Android')"
+            color="laranja">
+            <ion-icon name="logo-android" slot="end"></ion-icon>
+            Rede no Android
+          </ion-button>
+          <ion-button expand="full" fill="outline" shape="round" (click)="presentModal('rede-ios',6, 'Rede no IOS')" color="laranja">
+            <ion-icon name="logo-apple" slot="end"></ion-icon>
+            Rede no IOS
+          </ion-button>
+        </div>
+        <ion-card-header>
+        </ion-card-header>
+      </ion-card>
+      <br>
+    </div>
+  </div>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" style="margin: 10px">
+    <ion-fab-button color="primary">
+      <ion-icon name="call"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="top">
+      <ion-fab-button style="width: 60px; height: 60px;"
+       href="https://api.whatsapp.com/send?phone=5511984880527&text=Ol%C3%A1,%20me%20chamo%20{{nome}}%20e%20meu%20Cpf%20%C3%A9%20{{cpf}}.%20Gostaria%20de%20falar%20com%20algum%20atendente%20dispon%C3%ADvel">
+        <ion-icon name="logo-whatsapp" color="primary" size="large"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button href="tel: 08008787985" style="width: 60px; height: 60px;">
+        <ion-icon name="keypad" color="primary" size="large"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
+</ion-content>
+
+<!-- <canvas baseChart [datasets]="chartData" [chartType]="chartType" [labels]="chartLabels" [options]="chartOptions"></canvas> -->

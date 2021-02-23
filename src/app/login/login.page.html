@@ -1,0 +1,55 @@
+<ion-content [fullscreen]="false" [scrollEvents]="true" mode="ios">
+  <div class="curve curve-top">
+    <div class="curve-sub curve-top-sub">
+      <div class="login">
+        <img src="../../assets/img/starnet-logo.png" style="width: 200px; margin-left: 15px; margin-top: 20%;">
+        <div class="ion-text-center">
+          <h1 style="color: white">Bem Vindo!</h1>
+        </div>
+      </div>
+      <br>
+      <ion-card style="margin-top: 15px; padding: 5px;">
+        <ion-card-header>
+          <ion-card-title class="ion-text-center">Login</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <form (ngSubmit)="Login()" (keyup.enter)="Login()" #login="ngForm">
+            <ion-item style="margin-top: 15px;">
+              <ion-icon name="person" style="margin-right: 10px;"></ion-icon>
+              <ion-input autofocus="true" required="true" [(ngModel)]="usuario" name="usuario" placeholder="usuario..."
+                (ionChange)="CloseAlert()"></ion-input>
+            </ion-item>
+            <ion-item style="margin-top: 35px;">
+              <ion-icon name="lock-closed" style="margin-right: 10px;"></ion-icon>
+              <ion-input required="true" [(ngModel)]="senha" type="password" name="senha" placeholder="senha..."
+                (ionChange)="CloseAlert()">
+              </ion-input>
+            </ion-item>
+            <ion-item lines="none" class="ion-text-center" id="erro" style="display: none;">
+              <ion-text style="color: #fd8215; margin: 0 auto;">Úsuario e senha inválido</ion-text>
+            </ion-item>
+            <br>
+            <ion-button type="submit" shape="round" expand="full" fill="outline" color="laranja"
+              [disabled]="login.invalid">ENTRAR</ion-button>
+          </form>
+          <!--
+             <br>
+          <ion-button shape="round" expand="full" fill="outline" color="laranja" (click)="login.ngSubmit.emit()" *ngIf="!login.invalid" >ENTRAR</ion-button>
+          -->
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </div>
+
+  <!-- Footer without a border -->
+
+</ion-content>
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <a href="https://starnettelecom.com.br/" style="text-decoration: none;">
+      <ion-title style="color: #fd8215" class="ion-text-center">starnettelecom.com.br</ion-title>
+    </a>
+  </ion-toolbar>
+</ion-footer>
+
+<!-- <canvas baseChart [datasets]="chartData" [chartType]="chartType" [labels]="chartLabels" [options]="chartOptions"></canvas> -->
